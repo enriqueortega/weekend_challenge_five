@@ -17,18 +17,26 @@ var Animal = mongoose.model("Pet");
 
 //DB STUFF
 
+
+//Get from DB
 app.get("/pets", function(req,res){
     Animal.find({},function(err, data){
       if(err){
         console.log(err);
       }
-      res.send("Yupper do"); // Get data
+      res.send(data); // Get data
     });
 });
 
+// Post to DB
 app.post("/pets", function(req,res){
-    console.log(req.body);
-    res.send("Fo sho");
+    var addedAnimal = new Animal({"name" : req.body.name, "type" : req.body.type});
+    addedAnimal.save(function(err, data){
+      if(err){
+        console.log(err);
+      }
+      res.send("Fo sho");
+    });
 });
 
 app.get("/*", function(req,res){

@@ -11,8 +11,14 @@ myApp.controller("AddController", ["$scope", "PetService", function($scope, PetS
 myApp.controller("ShowController", ["$scope", "PetService", function($scope, PetService){
     var petService = PetService;
 
-    //Hank: Create Object? Hmmmmmm
+    $scope.data = {};
+    $scope.data.response = petService.data;
 
     //GET HERE
     petService.getData();
+    console.log(petService); //Has stuff
+    console.log(petService.data); // Empty??
+
+    console.log($scope.data); // Also has stuff
+    console.log($scope.data.response); // Also empty??
 }]);
