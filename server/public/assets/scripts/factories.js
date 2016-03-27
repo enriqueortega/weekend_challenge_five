@@ -10,7 +10,7 @@ myApp.factory("PetService", ["$http", function($http){
     var getData = function(){
        $http.get("/pets").then(function(response){
          data.results = response.data;
-        //  console.log(data.results);
+         console.log(data.results);
        });
     };
 
