@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Connecting to Mongoose
 mongoose.connect('mongodb://localhost/pet_application');
-mongoose.model("Pet", new Schema({"name": String, "type": String}));
+mongoose.model("Pet", new Schema({"name" : String, "type" : String, "age" : Number, "imageUrl" : String}));
 var Animal = mongoose.model("Pet");
 
 //DB STUFF
@@ -30,12 +30,13 @@ app.get("/pets", function(req,res){
 
 // Post to DB
 app.post("/pets", function(req,res){
-    var addedAnimal = new Animal({"name" : req.body.name, "type" : req.body.type});
+    var addedAnimal = new Animal({"name" : req.body.name, "type" : req.body.type, "age" : req.body.age, "image" : req.body.imageUrl});
     addedAnimal.save(function(err, data){
       if(err){
         console.log(err);
       }
-      res.send("Fo sho");
+      console.log(req.body);
+      res.send(data);
     });
 });
 

@@ -1,6 +1,5 @@
 myApp.factory("PetService", ["$http", function($http){
 
-    // Create another object? Hmm?
     var data = {};
 
     var greeting = function(){
@@ -8,15 +7,14 @@ myApp.factory("PetService", ["$http", function($http){
     };
 
     var getData = function(){
-       $http.get("/pets").then(function(response){
+       // w/o return, it 'returns' undefined. Yolo
+       return $http.get("/pets").then(function(response){
          data.results = response.data;
-         console.log(data.results);
        });
     };
 
     var postData = function(data){
        $http.post("/pets", data).then(function(response){
-          // console.log(response.data);
        });
     };
 
@@ -27,3 +25,21 @@ myApp.factory("PetService", ["$http", function($http){
       data : data
     };
 }]);
+
+
+// Code Below is Demo From Another App (SOF)
+
+// $scope.loadDict = function() {
+//   return $http.get('api/call/').
+//     success(function(data){
+//       for (env in data.environment) {
+//      var key = data.environment[env].name;
+//         $scope.dict[key] = data.environment[env].hosts;
+//       }
+//       console.log($scope.envDict)
+//       // in the console:
+//       // Object {string1: Array[2], string2: Array[2]}
+//     }).error(function(data){
+//         console.error(data);
+//     })
+// };

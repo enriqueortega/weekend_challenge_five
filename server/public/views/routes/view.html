@@ -1,16 +1,10 @@
 <p>
   List o pets
 </p>
-<ul>
-  <!-- <li ng-repeat>
-    {{ data.response.results[0].name }}
-    {{ data.response.results[0].type }}
-  </li> -->
-  <li>
-    {{ data }}
-  </li>
-  <!-- Eventual Goal? v-->
-  <!-- <li ng-repeat = "gremlins in petArray">
-    Name : {{ data.name }} Type: {{ data.type }}
-  </li> -->
+  <ul ng-repeat="pet in petArray">
+    <li><strong>Name: </strong> {{ pet.name }}</li>
+    <li><strong>Type: </strong> {{ pet.type }}</li>
+    <li><strong>Age: </strong> {{ pet.age }}</li>
+    <li><strong>Image: </strong> {{ pet.image }}</li>
+  </ul>
 </ul>
