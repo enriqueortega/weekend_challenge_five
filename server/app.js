@@ -30,12 +30,13 @@ app.get("/pets", function(req,res){
 
 // Post to DB
 app.post("/pets", function(req,res){
-    var addedAnimal = new Animal({"name" : req.body.name, "type" : req.body.type, "age" : req.body.age, "image" : req.body.imageUrl});
+    var addedAnimal = new Animal({"name" : req.body.name, "type" : req.body.type, "age" : req.body.age, "imageUrl" : req.body.imageUrl});
     addedAnimal.save(function(err, data){
       if(err){
         console.log(err);
       }
-      console.log(req.body);
+      console.log('req body', req.body);
+      console.log('data', data);
       res.send(data);
     });
 });
